@@ -1,14 +1,19 @@
-
+import os
 import sqlite3
 from pathlib import Path
 from contextlib import closing
 
 
 # Database location
-DB_PATH = (
-    Path(__file__).resolve().parents[2]
-    / "data"
-    / "tasks.db"
+DB_PATH = Path(
+    os.getenv(
+        "TASK_DB_PATH",
+        str(
+            Path(__file__).resolve().parents[2]
+            / "data"
+            / "tasks.db"
+        ),
+    )
 )
 
 
